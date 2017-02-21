@@ -1,8 +1,8 @@
-var colors = ["white", "blue", "red"];
-var grid = [], cols = 30, rows = 30;
+var colors = ["black", "blue", "red"];
+var grid = [], cols = 32, rows = 32;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(512, 512);
   frameRate(5);
   for (var i = 0; i < cols * rows; i++) {
     grid[i] = round(random());
@@ -41,7 +41,7 @@ function draw() {
   for (var x = 0; x < cols; x++) {
     for (var y = 0; y < rows; y++) {
       fill(colors[grid[x + y * cols]]);
-      rect(x * 20, y * 20, 20, 20);
+      rect(x * 16, y * 16, 16, 16);
     }
   }
 }
