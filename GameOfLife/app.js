@@ -27,7 +27,7 @@ function draw() {
       
       for (var i = -1; i <= 1; i++) {
         for (var j = -1; j <= 1; j++) {
-          var state = grid[ (x + i + (y + j) * cols) ];
+          var state = grid[ (x + i + (y + j) * cols) % (cols * rows) ];
           if (!(i == 0 && j == 0) && state) {
             neighboors++;
             if (state == 1)
