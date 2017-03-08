@@ -6,3 +6,6 @@ This is the traditional Game of Life... with a twist. There are two different co
 
 ### [Restosphene's Sieve](./RestosphenesSieve/)
 A Resptosphene's Sieve is a grid where you systematicaly cross out all of the composite numbers and you are left with all of the primes. Usualy the top left corner is one but I made it be zero because it made it easier to implement. Also there are no numbers drawn; I only filled in the squares.
+
+### [Multiplication Circles](./MultiplicationCircles/)
+This uses modular or 'clock' arithematic; so called because of it's appearance in analogue clocks. A series of points are placed evenly around a circle's circumference and are labeled with numbers starting at zero. A number is also chosen to multiply by. Then each point is connected to the point with the number `tn mod p` where *t* is the number chosen to multiply by, *n* is the number of the starting point, and *p* is the total number of points.
