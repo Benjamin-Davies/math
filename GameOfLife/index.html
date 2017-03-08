@@ -3,9 +3,24 @@
 <html>
   <head>
     <title>Conway's Game of Life</title>
+    <style>
+      body {
+        background: black;
+      }
+      
+      canvas {
+        border: 3px solid darkgrey;
+      }
+    </style>
   </head>
   <body>
     <script src="../lib/p5.min.js"></script>
     <script src="./app.js"></script>
+    <p>
+      <button onclick="grid = [];">Clear</button>
+      <button onclick="initRandom();">Random</button>
+      <button onclick="paused =! paused; this.innerText = paused ? 'Resume' : 'Pause';">Pause</button>
+      <button onclick="step();">Step</button>
+    </p>
   </body>
 </html>
