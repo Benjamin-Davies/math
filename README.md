@@ -1,6 +1,9 @@
 # Math
 This repository contains various projects that are based on maths concepts.
 
+### [Pi Calculator](./PiCalculator/)
+This is a variety of ways that you can approximate pi.
+
 ### [Conway's Game of Life](./GameOfLife/)
 This is the traditional Game of Life... with a twist. There are two different colours and when a cell is born it recieves the color of the majority of it's parents. There will always be a dominant colour because a in order to be born a cell must have three live neighboors and three is odd. Once it is given a color, the cell keeps its colour until it dies.
 
