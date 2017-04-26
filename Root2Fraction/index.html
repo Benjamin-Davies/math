@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Root To Fraction</title>
+  </head>
+  <body>
+    <h1>Root To Fraction</h1>
+    
+    <a href="../">&lt;= Back</a>
+    
+    <table id="mainTable">
+      <thead>
+        <th>Fraction</th>
+        <th>Decimal Value</th>
+        <th>Over</th>
+        <th>Error</th>
+      </thead>
+    </table>
+    
+    <div style="background: lightblue;">
+      Number:
+      <input type="number" id="numBox" min="1" value="2">
+      <br>
+      <input type="button" onclick="
+          document.getElementById('mainTable').innerHTML = `<thead>
+        <th>Fraction</th>
+        <th>Decimal Value</th>
+        <th>Over</th>
+        <th>Error</th>
+      </thead>`
+          findFractions(document.getElementById('numBox').value);
+        " value="Calculate">
+    </div>
+
+    <h4>Disclaimer:</h4>
+    <i>
+      This algorithm is brute force and not at all optomized.
+      It is not meant to be optomized and it doesn't need to be
+      as the time it takes for a computer to run 100^2
+      computations is way less than network speed.
+    </i>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
