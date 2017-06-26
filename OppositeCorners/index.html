@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Opposite Corners</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link href="css/style.css" rel="stylesheet">-->
+</head>
+
+<body>
+
+  <h1>Opposite Corners</h1>
+
+  <q>Hello From The Other Side</q> This finds the country on the other side of the globe, or the Antipodal Point.
+
+  <h2>Step 1:</h2>
+  Open <a href="https://www.google.com/maps/" target="_blank">Google Maps</a> and find a location. This can be anywhere on
+  earth, although the poles are obvoiusly opposite.
+
+  <h2>Step 2:</h2>
+  Right click on the location and click "What's here?". A small box will appear at the bottom. The last line of this box is
+  all we need. Copy the numbers from the bottom row into the two boxes below.
+
+  <table>
+    <tr>
+      <td>
+        Latitude:
+      </td>
+      <td>
+        <input type="number" id="lat" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Longitude:
+      </td>
+      <td>
+        <input type="number" id="lon" />
+      </td>
+    </tr>
+  </table>
+
+  <h2>Step 3:</h2>
+  Press this button:<br />
+  <button id="btn">Find My Antipodal Place</button>
+
+  <script>
+    var latTxt = document.getElementById("lat");
+    var lonTxt = document.getElementById("lon");
+    var s3_btn = document.getElementById("btn");
+
+    s3_btn.addEventListener("click", () => {
+      var lat1 = latTxt.value * 1;
+      var lon1 = lonTxt.value * 1;
+      if (isNaN(lat1) || isNaN(lon1))
+        alert("Please enter numbers");
+
+      var lat2 = -lat1;
+      var lon2 = lon1 + 180;
+      while (lon2 > 180) lon2 -= 360;
+
+      var url = "https://www.google.com/maps/place/" 
+        + String(Math.round(lat2 * 1000000) / 1000000) 
+        + ","
+        + String(Math.round(lon2 * 1000000) / 1000000);
+      window.open(url);
+
+      console.log("pos1: " + lat1 + ", " + lon1);
+      console.log("pos2: " + lat2 + ", " + lon2);
+      console.log(url);
+    });
+  </script>
+
+</body>
+
+</html>
