@@ -1,6 +1,9 @@
 # Math
 This repository contains various projects that are based on maths concepts.
 
+### [Mandelbrot Fractal](./Mandelbrot/)
+This renders a mandelbrot fractal in your browser window (not hardware accelerated).
+
 ### [Opposite Corners](./OppositeCorners/)
 > Hello From The Other Side
 
