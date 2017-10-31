@@ -1,0 +1,17 @@
+body {
+  background: #333;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+canvas {
+  margin: auto;
+}
+
+.mainOverlay {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
+}
