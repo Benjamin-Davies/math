@@ -1,0 +1,19 @@
+{
+  "name": "ML",
+  "version": "1.0.0",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.11.2",
+    "parcel": "^1.8.1",
+    "typescript": "^2.8.4"
+  },
+  "scripts": {
+    "start": "node build.js --dev",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "express": "^4.16.3"
+  }
+}
