@@ -25,8 +25,8 @@ canvas.width = w;
 canvas.height = h;
 
 canvas.addEventListener('mousedown', e => {
-  const x = e.clientX - canvas.offsetLeft;
-  const y = e.clientY - canvas.offsetTop;
+  const x = e.pageX - canvas.offsetLeft;
+  const y = e.pageY - canvas.offsetTop;
 
   xArr.push(x / w);
   yArr.push(y / h);
