@@ -2,6 +2,10 @@
 
 This repository contains various projects that are based on maths concepts.
 
+### [Machine Learning](./ML/)
+
+A collection of ML demos and tests.
+
 ### [Abacus Simulator](./AbacusSim/)
 
 A simulation of a Chinese Abacus.
