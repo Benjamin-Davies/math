@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polynomial Regression</title>
+  <link rel="stylesheet" href="/PolynomialRegression/style.79a6c574.css">
+<script src="/PolynomialRegression/style.79a6c574.js"></script></head>
+
+<body>
+  <h1>Polynomial Regression</h1>
+  <canvas id="main-canvas"></canvas>
+  <div id="controls">
+    <p>
+      <label for="degree">Degree</label>
+      <input type="range" id="degree" min="1" max="5" step="1" value="3" onmousemove="updateDegree(parseInt(this.value))">
+    </p>
+    <p>
+      <label for="optimizerType">Optimizer Type</label>
+      <select id="optimizerType" onchange="updateOptimizerType(this.value)">
+        <option value="sgd">SGD</option>
+        <option value="momentum">Momentum</option>
+        <option value="adagrad">Ada Grad</option>
+        <option value="adadelta">Ada Delta</option>
+        <option value="adam">Ada M</option>
+        <option value="adamax">Ada Max</option>
+        <option value="rmsprop">RMS Prop</option>
+      </select>
+    </p>
+    <p>
+      <label for="learningRate">Learning Rate</label>
+      <input type="range" id="learningRate" min="0" max="0.5" step="0.01" value="0.05" onmousemove="updateLearningRate(parseFloat(this.value))">
+    </p>
+  </div>
+  <script src="/PolynomialRegression/PolynomialRegression.89be81f4.js"></script>
+  <p>Click on the canvas above to add sample points</p>
+</body>
+
+</html>
