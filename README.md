@@ -6,6 +6,10 @@ This repository contains various projects that are based on maths concepts.
 
 A collection of ML demos and tests.
 
+### [Recamán Sequence](./Recaman/)
+
+A cool visualized sequence.
+
 ### [Abacus Simulator](./AbacusSim/)
 
 A simulation of a Chinese Abacus.

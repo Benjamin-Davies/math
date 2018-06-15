@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.container {
+  display: block;
+  margin: 1rem auto;
+  width: 400px;
+}
+
+canvas {
+  box-shadow: 0 5px 15px #888;
+}
