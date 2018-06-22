@@ -2,6 +2,10 @@
 
 This repository contains various projects that are based on maths concepts.
 
+### [Fractal Section](./FractalSection/)
+
+An animated cross-section of a sierpinski tetrahedron.
+
 ### [Machine Learning](./ML/)
 
 A collection of ML demos and tests.
