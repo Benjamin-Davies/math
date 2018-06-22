@@ -12,3 +12,8 @@ body {
   max-width: 1024px;
   width: 80%;
 }
+
+canvas {
+  display: block;
+  margin: auto;
+}
