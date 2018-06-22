@@ -6,6 +6,10 @@ This repository contains various small projects that are based on maths concepts
 
 An animated cross-section of a sierpinski tetrahedron.
 
+### [Barnsley Fern](./BarnsleyFern/)
+
+An animation of the generation of a Barnsley Fern.
+
 ### [Machine Learning](./ML/)
 
 A collection of ML demos and tests.
