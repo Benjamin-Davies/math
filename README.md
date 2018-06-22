@@ -1,6 +1,6 @@
 # Math
 
-This repository contains various projects that are based on maths concepts.
+This repository contains various small projects that are based on maths concepts.
 
 ### [Fractal Section](./FractalSection/)
 
