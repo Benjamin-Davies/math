@@ -10,6 +10,8 @@ async function run() {
 
   const displayShader = await DisplayShader.loadShaderProgram(gl);
 
+  createBuffer(gl);
+
   const container = document.getElementById('container') || document.body;
   container.appendChild(canvas);
 
@@ -29,5 +31,8 @@ async function run() {
 
     gl.clearColor(0.2, 0.2, 0.2, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
+
+    displayShader.use();
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
   }
 }

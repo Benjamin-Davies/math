@@ -6,7 +6,7 @@ class ShaderProgram {
    * @param {string} fragSource The fragment shader source
    */
   constructor(gl, vertSource, fragSource) {
-    if (typeof gl !== 'string') {
+    if (typeof gl !== 'undefined') {
       this.gl = gl;
 
       const vert = this.compileShader(vertSource, this.gl.VERTEX_SHADER);
@@ -77,10 +77,10 @@ class ShaderProgram {
 class DisplayShader extends ShaderProgram {
   /**
    * Create a display shader program
-   * @param {ShaderProgram} gl The old shader
+   * @param {ShaderProgram} program The old shader
    */
-  constructor(gl) {
-    super(gl);
+  constructor(program) {
+    super(undefined, program);
   }
 
   /**
@@ -89,7 +89,7 @@ class DisplayShader extends ShaderProgram {
    */
   static loadShaderProgram(gl) {
     return ShaderProgram.loadShaderProgram(gl, 'display').then(
-      p => new DisplayShader(gl, p)
+      p => new DisplayShader(p)
     );
   }
 }
