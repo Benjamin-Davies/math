@@ -8,7 +8,7 @@ async function run() {
     throw new Error('Could not create WebGL context');
   }
 
-  const displayShader
+  const displayShader = await DisplayShader.loadShaderProgram(gl);
 
   const container = document.getElementById('container') || document.body;
   container.appendChild(canvas);

@@ -6,30 +6,45 @@ class ShaderProgram {
    * @param {string} fragSource The fragment shader source
    */
   constructor(gl, vertSource, fragSource) {
-    this.gl = gl;
+    if (typeof gl !== 'string') {
+      this.gl = gl;
 
-    const vert = this.compileShader(vertSource, gl.VERTEX_SHADER);
-    const frag = this.compileShader(fragSource, gl.FRAGMENT_SHADER);
+      const vert = this.compileShader(vertSource, this.gl.VERTEX_SHADER);
+      const frag = this.compileShader(fragSource, this.gl.FRAGMENT_SHADER);
 
-    const program = this.gl.createProgram();
-    this.gl.attachShader(program, vert);
-    this.gl.attachShader(program, frag);
-    this.gl.linkProgram(program);
+      const program = this.gl.createProgram();
+      this.gl.attachShader(program, vert);
+      this.gl.attachShader(program, frag);
+      this.gl.linkProgram(program);
 
-    if (!this.gl.getProgramParameter(program, this.gl.LINK_STATUS)) {
-      console.warn(
-        'Could not link program',
-        this.gl.getProgramInfoLog(program)
-      );
+      if (!this.gl.getProgramParameter(program, this.gl.LINK_STATUS)) {
+        console.warn(
+          'Could not link program',
+          this.gl.getProgramInfoLog(program)
+        );
+      }
+
+      this.program = program;
+    } else {
+      /**@type {WebGLRenderingContext} */
+      this.gl = vertSource.gl;
+      /**@type {WebGLProgram} */
+      this.program = vertSource.program;
     }
+  }
 
-    this.program = program;
+  /**
+   * Use the program
+   */
+  use() {
+    this.gl.useProgram(this.program);
   }
 
   /**
    * Create and compile a shader
    * @param {string} source The shader source
    * @param {number} type The shader type
+   * @private
    */
   compileShader(source, type) {
     const shader = this.gl.createShader(type);
@@ -61,10 +76,20 @@ class ShaderProgram {
 
 class DisplayShader extends ShaderProgram {
   /**
+   * Create a display shader program
+   * @param {ShaderProgram} gl The old shader
+   */
+  constructor(gl) {
+    super(gl);
+  }
+
+  /**
    * Fetch and compile a shader program
    * @param {WebGLRenderingContext} gl The context
    */
   static loadShaderProgram(gl) {
-    return this.init(gl, ShaderProgram.loadShaderProgram(gl, 'display'));
+    return ShaderProgram.loadShaderProgram(gl, 'display').then(
+      p => new DisplayShader(gl, p)
+    );
   }
 }
