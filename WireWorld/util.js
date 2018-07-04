@@ -7,4 +7,5 @@ async function fetchText(input) {
   if (!res.ok) {
     throw Error('Resource not ok', input, res.statusText);
   }
+  return await res.text();
 }
