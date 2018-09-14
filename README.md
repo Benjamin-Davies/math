@@ -2,6 +2,10 @@
 
 This repository contains various small projects that are based on maths concepts.
 
+### [Squelch Probability](./SquelchProb/)
+
+Calculating the probability of getting no score in your first roll
+
 ### [Fractal Section](./FractalSection/)
 
 An animated cross-section of a sierpinski tetrahedron.
