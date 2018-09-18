@@ -14,12 +14,48 @@
       border-left: 1px solid black;
     }
 
+    #container {
+      margin: 2rem
+    }
+
+    pre {
+      display: inline
+    }
+
   </style>
 </head>
 
 <body>
   <h1>Squelch Probability</h1>
-  <h3>Calculating the probability of getting no score in your first roll</h3>
+  <h2>Calculating the probability of getting no score in your first roll</h2>
+  <h3>Intro</h3>
+  <p>In our math class, when we are studying probability we usualy play dice games, as dice are directly linked to probability.
+    One of our teacher's favourite dice games is Squelch.</p>
+  <p>In Squelch, when it is your turn, you roll the dice repeatedly until you either decide to keep what you have, or you roll
+    and you can't score. This means that the first step to understanding the probaility of Squelch is to be able to find
+    the probability that you can not score on a given roll.</p>
+  <p>There are three main dice combos that you can score with in Squelch. They are:</p>
+  <ul>
+    <li>Singular one or five,</li>
+    <li>Three the same,</li>
+    <li>Short or long straight (five or six consecutive dice),</li>
+  </ul>
+  <h3>Aim</h3>
+  <p>I wonder what the probability is of not scoring on your first roll in Squelch.</p>
+  <h3>Plan</h3>
+  <p>I will write some code (in javascript =D) that will cycle through all of the possible permutaions that you can get from
+    rolling six dice. For each permutation, I will then check if you can score at all with those dice.</p>
+  <p>It will check for a one or a five, and then it will check for any triples. It will not need to check for straights as any
+    straight (12345, 23456, 123456) contains a five and it will have already checked for that.</p>
+  <h3>Data &amp; Analysis</h3>
+  <p>Below are live counts of the calculated percentage, fraction and simplified fraction.</p>
+  <p>The graph shows a cumulative total of the number of loosing combinations discovered.</p>
+  <div id="container"></div>
+  <h3>Conclusion</h3>
+  <p>The output of my app shows that the probability of not scoring on your first roll in Squelch is 5/162 or 3.086%. This is
+    a very low probability and it shows that if you have six dice left then in most cases you are better of taking the chance.</p>
+  <p>An interesting feature in the graph is where the total plateus. This is caused by a large number of rolls all having either
+    a one or a five.</p>
   <script src="app.js"></script>
 </body>
 

@@ -1,10 +1,12 @@
+const container = document.getElementById('container');
+
 const text = document.createElement('p');
-document.body.appendChild(text);
+container.appendChild(text);
 
 const canvas = document.createElement('canvas');
 canvas.width = 600;
 canvas.height = 500;
-document.body.appendChild(canvas);
+container.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
 let total = 0;
