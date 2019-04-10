@@ -2,18 +2,6 @@
 
 This repository contains various small projects that are based on maths concepts.
 
-### [Machine Learning](./ML/)
-
-A collection of ML demos and tests.
-
-### [Fibonacci Beeper](./FibonacciBeeper/)
-
-A Mathematical musical experience
-
-### [Calculating Pi 2](./PiCalculator2/)
-
-Calculate your favourite mathematical constant with a circle and some randomness.
-
 ### [Fractal Section](./FractalSection/)
 
 An animated cross-section of a sierpinski tetrahedron.
