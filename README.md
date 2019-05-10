@@ -2,6 +2,10 @@
 
 This repository contains various small projects that are based on maths concepts.
 
+### [Raycasting](./raycasting/)
+
+Cool 3d spheres demo
+
 ### [Squelch Probability](./SquelchProb/)
 
 Calculating the probability of getting no score in your first roll
