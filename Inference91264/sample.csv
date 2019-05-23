@@ -1,100 +1,101 @@
-microsoft, microsoft/TypeScript
-microsoft, microsoft/aspnet-api-versioning
-google, google/tracing-framework
-microsoft, microsoft/ml-server-image-similarity
-microsoft, microsoft/vscode-asa
-microsoft, microsoft/jackknife-variational-inference
-microsoft, microsoft/hiredis
-google, google/dtask
-microsoft, microsoft/python-sample-vs-learning-django
-microsoft, microsoft/SimpleTracks
-microsoft, microsoft/MCW-Azure-Stack
-microsoft, microsoft/vscode-cordova
-google, google/zsldemo
-google, google/cameraview
-google, google/swift
-microsoft, microsoft/lumia-imaging-quickstart
-google, google/canvas-5-polyfill
-google, google/arc-proselint
-google, google/testimony
-google, google/guice-aqueduct
-google, google/voice-builder
-google, google/gmailsnooze
-microsoft, microsoft/WingtipTicketsSaaS-MultiTenantDB
-microsoft, microsoft/azcode
-microsoft, microsoft/sarif-sdk
-google, google/testRunner
-microsoft, microsoft/DomainControllerConfig
-google, google/googleapps-message-recall
-google, google/gts
-microsoft, microsoft/envoy
-google, google/inverting-proxy
-microsoft, microsoft/appcenter-sampleapp-tvos-swift
-microsoft, microsoft/node-request-light
-microsoft, microsoft/powerbi-visuals-sampleslicer
-microsoft, microsoft/ConnectedServicesSdkSamples
-microsoft, microsoft/CPS-Tools
-microsoft, microsoft/vscode-azureeventgrid
-google, google/GSCXScanner
-google, google/pubkeystore
-google, google/svalbard
-google, google/qpp
-microsoft, microsoft/connect-petdetector
-microsoft, microsoft/WebAdministrationDSC.Reverse
-google, google/gps-measurement-tools
-microsoft, microsoft/ELL-notebooks
-google, google/weasel
-google, google/opentest
-microsoft, microsoft/pxt-midi
-microsoft, microsoft/pict
-google, google/orderedcode
-microsoft, microsoft/ionic-typescript-blank
-microsoft, microsoft/fhir-server-samples
-microsoft, microsoft/PQCrypto-SIKE
-google, google/pkcs11test
-google, google/dspl
-google, google/gnxi
-microsoft, microsoft/ChakraCore-Debugger
-google, google/cornerstoneWebImageLoader
-microsoft, microsoft/pxt-sonar
-google, google/cpp-from-the-sky-down
-microsoft, microsoft/moodle
-microsoft, microsoft/Recurring-Integrations-Scheduler
-microsoft, microsoft/scsmcopyobject
-microsoft, microsoft/vsts-jenkins-build-integration-sample
-microsoft, microsoft/devkit-sdk
-google, google/windowtester
-google, google/sa360-flightsfeed
-google, google/jax
-google, google/ashier
-microsoft, microsoft/WastedRendersDetector
-google, google/amp-pwa-demo
-microsoft, microsoft/prose
-google, google/OctoPrint-LEDStripControl
-google, google/sensor-data-collection-library
-google, google/o3dtoydefense
-google, google/xpaf
-microsoft, microsoft/Unity-UWP-BTLE-Sample
-google, google/s2geometry
-microsoft, microsoft/VSSDK-Extensibility-Templates
-microsoft, microsoft/vs-editor-api
-microsoft, microsoft/NLU.DevOps
-microsoft, microsoft/azure-iot-developer-kit
-google, google/detectorgraph
-microsoft, microsoft/enforce-do-not-forward
-microsoft, microsoft/fasttrack-smat-workbook-generator
-google, google/new-project
-microsoft, microsoft/Quantum
-microsoft, microsoft/HealthVault-Mobile-iOS-Library
-microsoft, microsoft/python-sample-vs-learning-flask
-google, google/swift-llbuild
-google, google/cameraraw
-google, google/mobly-bundled-snippets
-google, google/kratu
-google, google/io-captions-gadget
-microsoft, microsoft/ApplicationInsights-WordPress
-google, google/ukey2
-google, google/orchestra
-google, google/helm-broker
-google, google/protorpc
-google, google/BucketServer
+org, repo, stars
+microsoft, microsoft/vsts-agent-docker, 176
+google, google/zoekt, 818
+microsoft, microsoft/vscode-azure-iot-edge, 26
+microsoft, microsoft/PowerBI-CSharp, 342
+microsoft, microsoft/MCW-Linux-lift-and-shift, 9
+google, google/xdelta3-decoder-js, 9
+microsoft, microsoft/vscode-remote-try-php, 4
+google, google/macops-molcertificate, 20
+google, google/uribeacon, 410
+google, google/tock-on-titan, 22
+google, google/zetasql, 926
+microsoft, microsoft/MIMWAL, 74
+microsoft, microsoft/Project_Natick_Analysis, 12
+microsoft, microsoft/VSDebugAdapterHost, 25
+google, google/webkit_inspection_protocol.dart, 3
+google, google/eme_logger, 16
+microsoft, microsoft/dapjs, 11
+microsoft, microsoft/refreshing-config-redis, 3
+microsoft, microsoft/eEVM, 97
+microsoft, microsoft/Imagine_planetary-pool, 15
+microsoft, microsoft/photo-inspector, 24
+microsoft, microsoft/service-fabric-linux-vagrant-onebox, 2
+microsoft, microsoft/containerized-microservices-pipeline-service, 9
+microsoft, microsoft/InkMLjs, 14
+google, google/trace-viewer, 468
+microsoft, microsoft/APS_Query_Toolbox, 1
+google, google/shlex, 53
+microsoft, microsoft/FluMapModel, 1
+microsoft, microsoft/Build-SCXcm, 2
+google, google/cornerstoneTools, 1
+microsoft, microsoft/msopentech-tools-for-intellij, 28
+google, google/google-drive-dokany, 9
+microsoft, microsoft/vscode-smoketest-express, 4
+google, google/quiver-log, 13
+google, google/bamboo-soy, 27
+google, google/embed-dart-vm, 65
+microsoft, microsoft/process-migrator, 17
+microsoft, microsoft/taco-simulate, 5
+google, google/jsontoken, 11
+google, google/multichase, 27
+microsoft, microsoft/macos-cookbook, 103
+microsoft, microsoft/ostc-docs, 10
+google, google/styleguide, 20341
+microsoft, microsoft/ABAP-SDK-for-Azure, 49
+microsoft, microsoft/MXDial-IoT-Sample, 24
+google, google/mozc, 564
+google, google/chrome-opt-out-extension, 9
+google, google/gnxi, 94
+google, google/google-gdata, 8
+microsoft, microsoft/Windows-AppConsult-samples-PWA, 15
+microsoft, microsoft/botbuilder-js, 240
+microsoft, microsoft/pxt-automation, 2
+microsoft, microsoft/Availability-Monitor-for-Kafka, 112
+microsoft, microsoft/java-example-rbroker-basics, 3
+google, google/GL-Shader-Validator, 30
+microsoft, microsoft/SparkEnhancement, 2
+google, google/binexport, 334
+microsoft, microsoft/pxt-fashion, 0
+google, google/guice, 8128
+microsoft, microsoft/charticulator, 227
+google, google/uiimage-additions, 11
+google, google/generator-goro, 20
+microsoft, microsoft/bobsql, 58
+microsoft, microsoft/vscode-mssql, 742
+microsoft, microsoft/VFSForGit.WWW, 6
+microsoft, microsoft/SQLBDC-AppDeploy, 0
+google, google/jalic, 9
+microsoft, microsoft/media-viewer, 17
+microsoft, microsoft/Export-Office365LicenseStatus, 4
+google, google/certificate-transparency-go, 160
+microsoft, microsoft/Imagine_street-racing, 12
+microsoft, microsoft/xblock-onedrive, 2
+google, google/ldpush, 30
+microsoft, microsoft/knife-azure, 2
+microsoft, microsoft/RESX-Unused-Finder, 17
+microsoft, microsoft/dpu-utils, 27
+microsoft, microsoft/Code-Hunt, 28
+microsoft, microsoft/MCW-Migrate-EDW-to-Azure-SQL-Data-Warehouse, 8
+microsoft, microsoft/nfc-ndef-tag-reader, 27
+microsoft, microsoft/PowerBI-visuals-tools, 91
+microsoft, microsoft/AzureDatalakeToolsForVSCode, 7
+microsoft, microsoft/steprunner, 3
+microsoft, microsoft/AzureUsageAndBillingPortal, 181
+google, google/securemessage, 57
+google, google/clerk, 17
+microsoft, microsoft/powerbi-visuals-streamgraph, 6
+microsoft, microsoft/MinIoC, 32
+microsoft, microsoft/Windows-appsample-Xaml-Hosting, 22
+microsoft, microsoft/VisualStudio-TestHost, 33
+microsoft, microsoft/MCCO, 1
+microsoft, microsoft/Intune-PowerShell-SDK, 67
+google, google/o3dtoydefense, 5
+google, google/dagger, 13568
+google, google/fscryptctl, 39
+microsoft, microsoft/pgtester, 29
+microsoft, microsoft/Bing-Maps-V8-TypeScript-Definitions, 28
+microsoft, microsoft/sql-data-warehouse-samples, 67
+microsoft, microsoft/ms-tpm-20-ref, 42
+google, google/climb-tracker, 27
+microsoft, microsoft/VSTS-Docker-Preview, 15
