@@ -33,7 +33,7 @@ const fetchRepos = async org => {
     if (page.length <= 0) break;
 
     for (const repo of page)
-      console.log(`${org}, ${repo.full_name}`);
+      console.log(`${org}, ${repo.full_name}, ${repo.stargazers_count}`);
     console.error(`completed ${i}`);
   }
 };
