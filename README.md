@@ -2,6 +2,10 @@
 
 This repository contains various small projects that are based on maths concepts.
 
+### [Windmill](./Windmill/)
+
+Inspired by 3blue1brown.
+
 ### [Raycasting](./raycasting/)
 
 Cool 3d spheres demo
