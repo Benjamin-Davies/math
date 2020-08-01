@@ -1,0 +1,1 @@
+This is the classical Conway's Game of Life... with a twist. There are two different colours and when a cell is born it recieves the color of the majority of it's parents. There will always be a dominant colour because a in order to be born a cell must have three live neighboors and three is odd. Once it is given a color, the cell keeps its colour until it dies.
