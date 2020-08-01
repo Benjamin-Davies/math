@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spirograph</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="mainCanvas"></canvas>
+  <div id="paramsDisplay" class="mainOverlay"></div>
+
+  <script type="module">
+    import { Spirograph } from './index.js';
+
+    const canvas = document.getElementById('mainCanvas');
+    const paramsDisplay = document.getElementById('paramsDisplay');
+    const spiro = new Spirograph(canvas);
+
+    let s = 0;
+
+    const resize = () => {
+      s = Math.min(window.innerWidth, window.innerHeight);
+      spiro.resize(s, s);
+      spiro.draw();
+    };
+
+    const mouseMove = ev => {
+      const r = ev.clientX / s;
+      const p = ev.clientY / s;
+
+      paramsDisplay.innerText = `r: ${r}\np: ${p}`;
+
+      spiro.setVars(r, p);
+      spiro.draw();
+    };
+
+    window.addEventListener('resize', resize);
+    document.addEventListener('mousemove', mouseMove);
+
+    resize();
+    spiro.init().then(() => spiro.draw());
+  </script>
+
+</body>
+
+</html>

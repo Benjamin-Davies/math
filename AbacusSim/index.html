@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Abacus Simulator</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+
+<body>
+  <h1 class="center">Abacus Simulator</h1>
+
+  <main class="container">
+    <div class="row">
+      <section class="col m8 s12 container">
+        <div id="canvasContainer"></div>
+      </section>
+      <section class="col m4 s12">
+        <div class="row">
+          <button class="btn blue col s4" id="btn-no7">7</button>
+          <button class="btn blue col s4" id="btn-no8">8</button>
+          <button class="btn blue col s4" id="btn-no9">9</button>
+          <button class="btn blue col s4" id="btn-no4">4</button>
+          <button class="btn blue col s4" id="btn-no5">5</button>
+          <button class="btn blue col s4" id="btn-no6">6</button>
+          <button class="btn blue col s4" id="btn-no1">1</button>
+          <button class="btn blue col s4" id="btn-no2">2</button>
+          <button class="btn blue col s4" id="btn-no3">3</button>
+          <button class="btn blue col s12" id="btn-no0">0</button>
+        </div>
+        <div class="row">
+          <div class="col s4 center">
+            <button class="btn-floating green" id="btn-add">
+              <i class="material-icons">add</i>
+            </button>
+          </div>
+          <div class="col s4 center">
+            <button class="btn-floating green" id="btn-sub">
+              <i class="material-icons">remove</i>
+            </button>
+          </div>
+          <div class="col s4 center">
+            <button class="btn-floating green" id="btn-res">
+              <i class="material-icons">undo</i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card" style="padding: 10px 20px;">
+      <h3>About The Abacus</h3>
+      <p>
+        The abacus shown above is simulated using only javascript. It is modeled of a Chinese Abacus, aka.
+        <a href="https://en.wikipedia.org/wiki/Suanpan">Suanpan</a>.
+      </p>
+      <p>
+        The beads are divided into columns. In this case 10. Each column represents a place value. So from the left they read: 1s,
+        10s, 100s, 1,000s, etc.
+      </p>
+      <p>
+        The lower set of beads slide to represent the numbers 0-4. When we reach 5 we reset the lower beads and slide up the single
+        upper bead to indicate that this digit is greater-than or equal-to four.
+      </p>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>

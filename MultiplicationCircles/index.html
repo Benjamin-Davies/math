@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Multiplication Circles</title>
+  </head>
+  <body>
+    <h1>Multiplication Circles</h1>
+    
+    <a href="../">&lt;= Back</a>
+    
+    <div id="canvasContainer"></div>
+    
+    <div style="background: lightblue;">
+      <span id="iteration"></span>
+      <br>
+      Points:
+      <input type="range" id="pts" min="10" max="400" value="200" step="10">
+      Table:
+      <input type="range" id="tbl" min="0" max="10" value="2" step="1">
+      <br>
+      <input type="button" onclick="initGrid()" value="Redraw">
+    </div>
+
+    <script src="../lib/p5.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Restosphene's Sieve</title>
+  </head>
+  <body>
+    <h1>Restosphene's Sieve</h1>
+    
+    <a href="../">&lt;= Back</a>
+    
+    <div id="canvasContainer"></div>
+    
+    <div style="background: lightblue;">
+      <span id="iteration"></span>
+      <br>
+      Columns:
+      <input type="range" id="cols" min="10" max="400" value="200">
+      <br>
+      <input type="button" onclick="initGrid()" value="Redraw">
+    </div>
+
+    <script src="../lib/p5.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

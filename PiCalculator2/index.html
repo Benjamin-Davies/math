@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Calculating Pi 2</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- MathML Poly-Fill -->
+  <script src="http://fred-wang.github.io/mathml.css/mspace.js"></script>
+
+  <style>
+    #graph-canvas {
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container center">
+      <h1>Calculating Pi 2</h1>
+      <h3>With A Circle And Some Randomness</h3>
+      <p>
+        <a href="../" class="btn-flat light-blue-text">back to list</a>
+      </p>
+      <p>
+        This animation was directly inspired by
+        <a href="https://youtu.be/5cNnf_7e92Q">The Coding Train</a>.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <div class="row container">
+      <div class="col s12 l6">
+        <div class="center">
+          <canvas id="circle-canvas"></canvas>
+        </div>
+        <div class="container">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  Cycle count
+                </td>
+                <td>
+                  <code id="total"></code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Current estimate
+                </td>
+                <td>
+                  <code id="est"></code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Best estimate
+                </td>
+                <td>
+                  <code id="best-est"></code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Off by
+                </td>
+                <td>
+                  <code id="best-diff"></code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col s12 l6">
+        <div class="center">
+          <canvas id="graph-canvas"></canvas>
+        </div>
+        <div class="center">
+          <button class="btn" onclick="reset()">reset</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section>
+    <div class="container">
+      <h4>How It Works</h4>
+      <p>
+        This demo works based on the fact that the chance of a random point being inside of a shape is proportional to the shape's
+        area.
+      </p>
+      <p>
+        To find the circle's area we can use a simple rule.
+      </p>
+      <p>
+        <code>
+          A = &pi;r<sup>2</sup>
+        </code>
+      </p>
+      <p>
+        To find the square's area we use the size length squared.
+      </p>
+      <p>
+        <code>
+          A = s<sup>2</sup>
+        </code>
+      </p>
+      <p>
+        We know that the side of the square is equal to the diameter of the circle. Which is twice the radius.
+      </p>
+      <p>
+        <code>
+          a = D = 2r<br>
+          A = a<sup>2</sup><br>
+          = D<sup>2</sup><br>
+          = (2r)<sup>2</sup><br>
+          = 4r<sup>2</sup>
+        </code>
+      </p>
+      <p>
+        Finaly we can find the ratio between their areas and rearrange to get &pi;. =D
+      </p>
+      <p>
+        <code>
+          A<sub>cir</sub> / A<sub>squ</sub><br>
+          = &pi;r<sup>2</sup> / 4r<sup>2</sup><br>
+          = &pi; / 4<br>
+          &pi; = 4 * (A<sub>cir</sub> / A<sub>squ</sub>)
+        </code>
+      </p>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

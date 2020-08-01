@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Pi Calculator</title>
+  </head>
+  <body>
+    <h1>Pi Calculator</h1>
+      
+      <a href="../">&lt;= Back</a>
+      
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Value</th>
+        <th>Video</th>
+        <th>Formula</th>
+      </tr>
+      <tr>
+        <td>Javascript Constant</td>
+        <td id="pi-actual"></td>
+        <td></td>
+        <td>Math.PI</td>
+      </tr>
+      <tr>
+        <td>Co-prime Probability</td>
+        <td id="pi-coprime"></td>
+        <td><a href="https://youtu.be/RZBhSi_PwHU">Stand Up Maths Video</a></td>
+        <td>sqrt(6 / x) where x = p(gcd(a, b) = 1)</td>
+      </tr>
+      <tr>
+        <td>Infinite Sum</td>
+        <td id="pi-insum"></td>
+        <td><a href="https://youtu.be/HrRMnzANHHs">Stand Up Maths Video</a></td>
+        <td>infinite sum: -1^n * 4/(2n + 1)</td>
+      </tr>
+      <tr>
+        <td>Archimedes' Method</td>
+        <td id="pi-archimedes"></td>
+        <td><a href="https://youtu.be/HrRMnzANHHs">Video</a></td>
+        <td>n * sin(180/n)</td>
+      </tr>
+    </table>
+    
+    <script src="app.js"></script>
+  </body>
+</html>
