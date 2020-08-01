@@ -4,20 +4,6 @@ const child_process = require('child_process');
 
 const isDev = process.argv.includes('--dev');
 
-fs
-  .readdirSync(__dirname)
-  .filter(dir => {
-    const c = dir[0];
-    return c.toUpperCase() === c;
-  })
-  .map(dir => path.join(__dirname, dir))
-  .forEach(dir => {
-    fs.readdirSync(dir).forEach(subDir => {
-      fs.unlinkSync(path.join(dir, subDir));
-    });
-    fs.rmdirSync(dir);
-  });
-
 // const options = { watch: isDev };
 const publicUrl = isDev ? '/' : '/math/ML/';
 const srcDir = path.join(__dirname, 'src/');
