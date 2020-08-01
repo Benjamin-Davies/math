@@ -98,7 +98,7 @@ const commands = {
         readmes.push({ name, content, commitDate: new Date(commitDate) });
       }
     }
-    readmes.sort((a, b) => (a.commitDate > b.commitDate ? 1 : -1));
+    readmes.sort((a, b) => (a.commitDate > b.commitDate ? -1 : 1));
     for (const { name, content } of readmes) {
       await appendFile(
         join(distDir, 'README.md'),
