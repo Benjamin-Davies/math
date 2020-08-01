@@ -16,6 +16,8 @@ import { titleCase } from "title-case";
 
 const distDir = join(__dirname, 'dist');
 
+const ignoreNpm = process.argv.includes('--ignore-npm');
+
 const excludedFiles = [
   '.git',
   '.vscode',
@@ -55,24 +57,28 @@ const commands = {
     }
 
     // Build npm projects and copy results
-    for (const dir of npmDirs) {
-      const packageJson = await readJson(join(__dirname, dir, 'package.json'));
-      if (packageJson.scripts.hasOwnProperty('build')) {
-        await remove(join(__dirname, dir, 'dist'));
-        await remove(join(__dirname, dir, '.cache'));
-
-        // execSync('npm run build', {
-        //   cwd: join(__dirname, dir),
-        //   stdio: 'inherit',
-        // });
-
-        // await copy(join(__dirname, dir, 'dist'), join(distDir, dir), {
-        //   recursive: true,
-        // });
-      } else {
-        console.warn(
-          `Package ${packageJson.name} (${dir}/) has no build script. Skipping...`
+    if (!ignoreNpm) {
+      for (const dir of npmDirs) {
+        const packageJson = await readJson(
+          join(__dirname, dir, 'package.json')
         );
+        if (packageJson.scripts.hasOwnProperty('build')) {
+          await remove(join(__dirname, dir, 'dist'));
+          await remove(join(__dirname, dir, '.cache'));
+
+          execSync('npm run build', {
+            cwd: join(__dirname, dir),
+            stdio: 'inherit',
+          });
+
+          await copy(join(__dirname, dir, 'dist'), join(distDir, dir), {
+            recursive: true,
+          });
+        } else {
+          console.warn(
+            `Package ${packageJson.name} (${dir}/) has no build script. Skipping...`
+          );
+        }
       }
     }
 
