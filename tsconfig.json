@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "checkJs": true
-  },
-  "files": ["**/*.ts", "**/*.js"]
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "build/"
+  }
 }
