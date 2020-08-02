@@ -1,0 +1,8 @@
+.App {
+  background: lightgrey;
+}
+
+.App--canvas-container {
+  background: black;
+  overflow: hidden;
+}
