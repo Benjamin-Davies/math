@@ -1,8 +1,9 @@
 import React from 'react';
 import './AppCanvas.css';
 import { Canvas } from 'react-three-fiber';
-import DemoCube from '../DemoCube/DemoCube';
 import CameraControls from '../CameraControls/CameraControls';
+import { Hexagon } from '../../polygons/ConvexFinitePlanarPolygon';
+import { MeshPhongMaterial, DoubleSide } from 'three';
 
 function AppCanvas() {
   return (
@@ -11,7 +12,10 @@ function AppCanvas() {
         <ambientLight />
         <directionalLight position={[1, 2, 3]} />
         <CameraControls />
-        <DemoCube />
+        <mesh
+          geometry={Hexagon.geometry}
+          material={new MeshPhongMaterial({ side: DoubleSide })}
+        />
       </Canvas>
     </div>
   );
