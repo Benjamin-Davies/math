@@ -1,0 +1,137 @@
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+  \title{Internal Angles between Faces of a Pyramid}
+  \author{Benjamin Davies}
+  \maketitle
+
+  \begin{abstract}
+    
+    To calculate the angles between the faces of a polyhedron, it is helpful to simplify our model by only considering the pyramid formed by a vertex and all of its adjacent verices. For regular polyhedra, the base of this pyramid is a regular polygon, so we can find its angles trivially.
+
+    I am trying to find the angles between the faces of a pyramid, given the internal angle of the base polygon and the angle at the apex. I will only consider pyramids whose bases are regular polygons and whose apexes lie directly above the center of the base.
+
+  \end{abstract}
+
+  \section{Names of points and edges}
+
+  The apex shall be $A$. Choose one vertex on the base and call it $B$. The two points on the base which are conected by edges to $B$ are called $C$ and $D$.
+
+  $E$ is a point on $AB$ that satisfies the following conditions, $EC$ is perpendicular to $AB$, and $ED$ is perpendicular to $AB$. This is helpful because the triangle $DEC$ has an angle that is the desired angle, but it also shares vertices with the pyramid.
+
+  $\theta = \angle{BAC} = \angle{BAD}$, $\alpha = \angle{CBD}$, and $\beta = \angle{CED}$, which are the angle at the apex, the internal angles of the base polygon, and the internal angles between the faces, respectively.
+
+  $l = AB = AC = AD$, $a = BC = BD$, $b = EC = ED$, and $c = CD$.
+
+  \section{Forming the equations}
+
+  Because $\angle{AEC}$ and $\angle{AED}$ are right angles, we can just use a simple sine function to get $b$.
+
+  \begin{equation}
+    b = l\sin{\theta}
+  \end{equation}
+
+  To calculate the edge lengths of an isoceles triangle we can divide it in half down the middle. This gives us $b = 2a\sin{\frac{\theta}{2}}$.
+
+  There are three different isoceles triangles that we need to find the base lengths for: $ABC$ (same as $ABD$), $CBD$, and $CED$. This gives us:
+
+  \begin{equation}
+    a = 2l\sin{\frac{\theta}{2}}
+  \end{equation}
+
+  \begin{equation}
+    c = 2a\sin{\frac{\alpha}{2}}
+  \end{equation}
+
+  \begin{equation}
+    c = 2b\sin{\frac{\beta}{2}}
+  \end{equation}
+
+  \section{Combining and simplifying}
+
+  Because we have two equations for $c$, we can set them equal to each other.
+
+  \begin{equation}
+    2a\sin{\frac{\alpha}{2}} = 2b\sin{\frac{\beta}{2}}
+  \end{equation}
+
+  Rearranging to get $\beta$ on its own we get:
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[\frac{a\sin{\frac{\alpha}{2}}}{b}\right]}
+  \end{equation}
+
+  Substituting the equations for $a$ and $b$ we get:
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \frac{(l\sin{\theta})(\sin{\frac{\alpha}{2}})}
+      {2l\sin{\frac{\theta}{2}}}
+    \right]}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \frac{\sin{\theta}}{2\sin{\frac{\theta}{2}}}
+      \left(\sin{\frac{\alpha}{2}}\right)
+    \right]}
+  \end{equation}
+
+  We can use the double angle formula for sine found at \url{https://mathworld.wolfram.com/Double-AngleFormulas.html} to simplify the first factor in the square brackets.
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \frac{
+        \left(2\sin{\frac{\theta}{2}}\right)
+        \left(\cos{\frac{\theta}{2}}\right)
+      }{2\sin{\frac{\theta}{2}}}
+      \left(\sin{\frac{\alpha}{2}}\right)
+    \right]}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \left(2\cos{\frac{\theta}{2}}\right)
+      \left(\sin{\frac{\alpha}{2}}\right)
+    \right]}
+  \end{equation}
+
+  \section{Verifying}
+
+  To check my working, I used the example of a cube vertex. The angles on the faces are $90^\circ$ ($\theta = \frac{\pi}{2}$), the base of our pyramid is a equillateral triangle ($\alpha = \frac{\pi}{3}$), and we are expecting the faces to be at $90^\circ$ angles to each other ($\beta = \frac{\pi}{2}$).
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \left(2\cos{\frac{\frac{\pi}{2}}{2}}\right)
+      \left(\sin{\frac{\frac{\pi}{3}}{2}}\right)
+    \right]}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      \left(2\cos{\frac{\pi}{4}}\right)
+      \left(\sin{\frac{\pi}{6}}\right)
+    \right]}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\left[
+      2 \times
+      \frac{\sqrt{2}}{2}
+      \times
+      \frac{1}{2}
+    \right]}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\sin^{-1}{\frac{\sqrt{2}}{2}}
+  \end{equation}
+
+  \begin{equation}
+    \beta = 2\times\frac{\pi}{4} = \frac{\pi}{2}
+  \end{equation}
+
+\end{document}
