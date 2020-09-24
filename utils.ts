@@ -34,9 +34,10 @@ const files = readdirSync(__dirname).filter(
   (file) => !excludedFiles.includes(file)
 );
 
-const npmDirs = files.filter((file) =>
-  existsSync(join(__dirname, file, 'package.json'))
-);
+const npmDirs =
+  process.argv.length > 3
+    ? process.argv.slice(3)
+    : files.filter((file) => existsSync(join(__dirname, file, 'package.json')));
 
 const commands = {
   prepare() {
