@@ -10,9 +10,13 @@ import {
   readFile,
 } from 'fs-extra';
 import { join } from 'path';
-import { execSync } from 'child_process';
+import { exec, execSync, spawn } from 'child_process';
 import { noCase } from 'change-case';
-import { titleCase } from "title-case";
+import { titleCase } from 'title-case';
+
+import * as express from 'express';
+import * as serveIndex from 'serve-index';
+import * as proxy from 'express-http-proxy';
 
 const distDir = join(__dirname, 'dist');
 
@@ -30,9 +34,10 @@ const files = readdirSync(__dirname).filter(
   (file) => !excludedFiles.includes(file)
 );
 
-const npmDirs = files.filter((file) =>
-  existsSync(join(__dirname, file, 'package.json'))
-);
+const npmDirs =
+  process.argv.length > 3
+    ? process.argv.slice(3)
+    : files.filter((file) => existsSync(join(__dirname, file, 'package.json')));
 
 const commands = {
   prepare() {
@@ -42,6 +47,42 @@ const commands = {
         stdio: 'inherit',
       });
     }
+  },
+  async start() {
+    const app = express();
+    const port = +process.env.PORT || 3000;
+    let currentPort = 5000;
+
+    for (const dir of npmDirs) {
+      const serverPort = currentPort++;
+      const packageJson = await readJson(join(__dirname, dir, 'package.json'));
+      if (packageJson.scripts.hasOwnProperty('start')) {
+        console.log(`${packageJson.name ?? dir} listening on port ${serverPort}`);
+
+        spawn('npm run start', {
+          cwd: join(__dirname, dir),
+          shell: true,
+          stdio: 'inherit',
+          env: {
+            ...process.env,
+            PORT: `${serverPort}`,
+            PUBLIC_URL: `/${dir}/`,
+          },
+        });
+
+        app.use(`/${dir}`, proxy(`http://localhost:${serverPort}`));
+      } else {
+        console.warn(
+          `Package ${packageJson.name} (${dir}/) has no start script. Skipping...`
+        );
+      }
+    }
+
+    app.use('/', express.static('.'), serveIndex('.', { icons: true }));
+
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
   },
   async build() {
     await ensureDir(distDir);
