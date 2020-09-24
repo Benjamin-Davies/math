@@ -5,7 +5,7 @@ const child_process = require('child_process');
 const isDev = process.argv.includes('--dev');
 
 // const options = { watch: isDev };
-const publicUrl = isDev ? '/' : '/math/ML/';
+const publicUrl = process.env.PUBLIC_URL || (isDev ? '/' : '/math/ML/');
 const srcDir = path.join(__dirname, 'src/');
 const distDir = path.join(__dirname, 'dist/');
 
@@ -32,8 +32,8 @@ for (const file of ['index.html', 'style.css']) {
 if (isDev) {
   const express = require('express');
   const app = express();
-  app.use(express.static(__dirname));
-  app.listen(8080, () => {
-    console.log('Dev server running at http://localhost:8080/');
+  app.use(express.static(__dirname + '/dist'));
+  app.listen(process.env.PORT || 8080, () => {
+    console.log(`Dev server running at http://localhost:${process.env.PORT || 8080}/`);
   });
 }
