@@ -1,9 +1,0 @@
-.AppCanvas {
-  width: 80vmin;
-  height: 60vmin;
-  margin: auto;
-}
-
-.AppCanvas :focus {
-  outline: none;
-}
