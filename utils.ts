@@ -67,10 +67,16 @@ const commands = {
             ...process.env,
             PORT: `${serverPort}`,
             PUBLIC_URL: `/${dir}/`,
+            BROWSER: 'none',
           },
         });
 
-        app.use(`/${dir}`, proxy(`http://localhost:${serverPort}`));
+        app.use(
+          `/${dir}`,
+          proxy(`http://localhost:${serverPort}`, {
+            proxyReqPathResolver: (req) => `/${dir}${req.path}`,
+          })
+        );
       } else {
         console.warn(
           `Package ${packageJson.name} (${dir}/) has no start script. Skipping...`
