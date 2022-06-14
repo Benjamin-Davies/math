@@ -17,7 +17,11 @@ let circles = [
 
 document.addEventListener('mousedown', (ev) => {
   points.push([ev.clientX, ev.clientY]);
+  calculateCircles();
+});
 
+document.addEventListener('touchstart', (ev) => {
+  points.push([ev.targetTouches[0].clientX, ev.targetTouches[0].clientY]);
   calculateCircles();
 });
 

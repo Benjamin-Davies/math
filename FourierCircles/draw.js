@@ -3,8 +3,8 @@ import { iToN } from './app.js';
 const DELTA_T = 0.01;
 
 const canvas = document.createElement('canvas');
-const width = (canvas.width = 500);
-const height = (canvas.height = 500);
+const width = (canvas.width = window.innerWidth);
+const height = (canvas.height = window.innerHeight);
 document.body.appendChild(canvas);
 
 const ctx = canvas.getContext('2d');
