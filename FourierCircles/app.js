@@ -1,6 +1,6 @@
 import { clear, drawCircles, drawLines } from './draw.js';
 
-const N = 3;
+const N = 10;
 
 let time = 0;
 /**@type {[number, number][]} */
@@ -40,11 +40,10 @@ function calculateCircles() {
   ]);
   origin = [x_total / points.length, y_total / points.length];
 
-  circles = Array(2 * N)
+  circles = Array(Math.min(points.length - 1, 2 * N))
     .fill(0)
     .map((_, i) => {
       const n = iToN(i);
-      console.log(i, n);
       const [a_total, b_total] = points
         .map(([x, y], i) => {
           x -= origin[0];
