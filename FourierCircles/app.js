@@ -22,6 +22,7 @@ document.addEventListener('mousedown', (ev) => {
 });
 
 /**
+ * Convert an index to alternating positive negative integers
  * @param {number} i
  */
 export function iToN(i) {
@@ -50,8 +51,8 @@ function calculateCircles() {
           y -= origin[1];
           const theta = (2 * n * Math.PI * i) / points.length;
           return [
-            x * Math.cos(theta) - y * Math.sin(theta),
-            x * Math.sin(theta) + y * Math.cos(theta),
+            x * Math.cos(theta) + y * Math.sin(theta),
+            -x * Math.sin(theta) + y * Math.cos(theta),
           ];
         })
         .reduce(([a_1, b_1], [a_2, b_2]) => [a_1 + a_2, b_1 + b_2]);
