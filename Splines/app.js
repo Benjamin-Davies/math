@@ -2,6 +2,9 @@ const WIDTH = 400;
 const HEIGHT = 400;
 const DELTA_T = 1e-3;
 
+const shapes = ['circle', 'parabola'];
+let shape = shapes[0];
+
 const canvas = document.createElement('canvas');
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
@@ -69,7 +72,7 @@ function drawSpline(degree, controlPoints, knotVector) {
     ];
     const x = applyBases(bases, offset, 0);
     const y = applyBases(bases, offset, 1);
-    const w = applyBases(bases, offset, 2) || 1;
+    const w = applyBases(bases, offset, 2);
     ctx.fillRect(x / w, y / w, 1, 1);
   }
 }
@@ -80,27 +83,32 @@ function draw() {
   ctx.translate(WIDTH / 2, HEIGHT / 2);
   ctx.scale(1, -1);
 
-  // Circle
-  const controlPoints = [
-    [100, 0, 1],
-    [100 * Math.SQRT1_2, 100 * Math.SQRT1_2, Math.SQRT1_2],
-    [0, 100, 1],
-    [-100 * Math.SQRT1_2, 100 * Math.SQRT1_2, Math.SQRT1_2],
-    [-100, 0, 1],
-    [-100 * Math.SQRT1_2, -100 * Math.SQRT1_2, Math.SQRT1_2],
-    [0, -100, 1],
-    [100 * Math.SQRT1_2, -100 * Math.SQRT1_2, Math.SQRT1_2],
-    [100, 0, 1],
-  ];
-  const knotVector = [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4];
+  let controlPoints, knotVector;
+  switch (shape) {
+    case 'circle':
+      controlPoints = [
+        [100, 0, 1],
+        [100 * Math.SQRT1_2, 100 * Math.SQRT1_2, Math.SQRT1_2],
+        [0, 100, 1],
+        [-100 * Math.SQRT1_2, 100 * Math.SQRT1_2, Math.SQRT1_2],
+        [-100, 0, 1],
+        [-100 * Math.SQRT1_2, -100 * Math.SQRT1_2, Math.SQRT1_2],
+        [0, -100, 1],
+        [100 * Math.SQRT1_2, -100 * Math.SQRT1_2, Math.SQRT1_2],
+        [100, 0, 1],
+      ];
+      knotVector = [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4];
+      break;
 
-  // Parabola
-  // const controlPoints = [
-  //   [100, 100, 1],
-  //   [0, -100, 0],
-  //   [-100, 100, 1],
-  // ];
-  // const knotVector = [0, 0, 0, 1, 1, 1];
+    case 'parabola':
+      controlPoints = [
+        [100, 100, 1],
+        [0, -100, 1],
+        [-100, 100, 1],
+      ];
+      knotVector = [0, 0, 0, 1, 1, 1];
+      break;
+  }
 
   ctx.fillStyle = '#e77';
   drawSpline(2, controlPoints, knotVector);
@@ -116,3 +124,16 @@ function draw() {
 }
 
 draw();
+
+const select = document.createElement('select');
+for (const shape of shapes) {
+  const option = document.createElement('option');
+  option.innerText = shape;
+  option.value = shape;
+  select.appendChild(option);
+}
+select.addEventListener('input', () => {
+  shape = select.value;
+  draw();
+});
+document.body.appendChild(select);
