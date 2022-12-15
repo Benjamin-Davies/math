@@ -18,15 +18,15 @@ function drawSpline(degree, controlPoints, knotVector) {
   const lastKnot = knotVector[knotVector.length - 1];
   let knotIndex = 0;
 
-  const applyWeights = (
-    /** @type {number[]} */ weights,
+  const applyBases = (
+    /** @type {number[]} */ bases,
     /** @type {number} */ offset,
     /** @type {number} */ component
   ) =>
-    weights.reduce((acc, w, i) => {
-      const cp = Math.min(Math.max(0, i + offset), controlPoints.length - 1);
-      return acc + w * controlPoints[cp][component];
-    }, 0);
+    bases.reduce(
+      (acc, basis, i) => acc + basis * controlPoints[offset + i][component],
+      0
+    );
 
   const f = (
     /** @type {number} */ i,
@@ -62,14 +62,14 @@ function drawSpline(degree, controlPoints, knotVector) {
 
     ctx.fillStyle = `hsl(${u * 360}deg, 95%, 40%)`;
 
-    const weights = [
+    const bases = [
       N(offset, degree, u),
       N(offset + 1, degree, u),
       N(offset + 2, degree, u),
     ];
-    const x = applyWeights(weights, offset, 0);
-    const y = applyWeights(weights, offset, 1);
-    const w = applyWeights(weights, offset, 2) || 1;
+    const x = applyBases(bases, offset, 0);
+    const y = applyBases(bases, offset, 1);
+    const w = applyBases(bases, offset, 2) || 1;
     ctx.fillRect(x / w, y / w, 1, 1);
   }
 }
