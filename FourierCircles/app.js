@@ -37,30 +37,53 @@ export function iToN(i) {
   }
 }
 
-function calculateCircles() {
-  const [x_total, y_total] = points.reduce(([x_1, y_1], [x_2, y_2]) => [
-    x_1 + x_2,
-    y_1 + y_2,
-  ]);
-  origin = [x_total / points.length, y_total / points.length];
+/**
+ * Calculates the DFT of a power of 2 length array
+ * @param {[number, number][]} f
+ */
+function fft(f) {
+  if (f.length === 1) {
+    return f;
+  }
 
-  circles = Array(Math.min(points.length - 1, 2 * N))
-    .fill(0)
-    .map((_, i) => {
-      const n = iToN(i);
-      const [a_total, b_total] = points
-        .map(([x, y], i) => {
-          x -= origin[0];
-          y -= origin[1];
-          const theta = (2 * n * Math.PI * i) / points.length;
-          return [
-            x * Math.cos(theta) + y * Math.sin(theta),
-            -x * Math.sin(theta) + y * Math.cos(theta),
-          ];
-        })
-        .reduce(([a_1, b_1], [a_2, b_2]) => [a_1 + a_2, b_1 + b_2]);
-      return [a_total / points.length, b_total / points.length];
-    });
+  const f_even = f.filter((_, i) => i % 2 === 0);
+  const f_odd = f.filter((_, i) => i % 2 === 1);
+
+  const F_even = fft(f_even);
+  const F_odd = fft(f_odd);
+
+  const F = Array(f.length).fill(null);
+  for (let i = 0; i < f.length / 2; i++) {
+    const theta = (2 * Math.PI * i) / f.length;
+    const [a, b] = F_even[i];
+    const [c, d] = F_odd[i];
+    F[i] = [
+      a + c * Math.cos(theta) - d * Math.sin(theta),
+      b + c * Math.sin(theta) + d * Math.cos(theta),
+    ];
+    F[i + f.length / 2] = [
+      a - c * Math.cos(theta) + d * Math.sin(theta),
+      b - c * Math.sin(theta) - d * Math.cos(theta),
+    ];
+  }
+  return F;
+}
+
+function calculateCircles() {
+  const count = points.length;
+  const nextPow2 = Math.pow(2, Math.ceil(Math.log2(count)));
+  const f = [...points, ...Array(nextPow2 - count).fill(points[0])];
+
+  const F = fft(f);
+
+  origin = [F[0][0] / F.length, F[0][1] / F.length];
+  circles = [];
+  for (let i = 0; i < Math.min(F.length - 1, N); i++) {
+    const n = iToN(i);
+    const j = n < 0 ? F.length + n : n;
+    const [a, b] = F[j];
+    circles.push([a / F.length, b / F.length]);
+  }
 }
 
 function draw() {
