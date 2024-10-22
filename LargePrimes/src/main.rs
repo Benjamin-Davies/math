@@ -79,5 +79,9 @@ fn main() {
 
     let p = MersenneNumber(n);
     println!("{p}");
-    assert!(p.is_prime());
+    if p.is_prime() {
+        println!("Prime!");
+    } else {
+        println!("Not prime.");
+    }
 }
