@@ -1,7 +1,6 @@
 //! Usage: cargo run --release [n]
 //!
 //! Checks if 2^n - 1 is prime using the Lucas-Lehmer primality test.
-//! N must be an odd prime.
 
 use std::{env::args, fmt};
 
@@ -17,10 +16,17 @@ impl MersenneNumber {
     }
 
     fn is_prime(&self) -> bool {
+        if self.0 < 10 {
+            // For small values of n, we can just check if 2^n - 1 is prime.
+            return is_prime(2u32.pow(self.0) - 1);
+        }
+
         // https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test
         // This method of checking primality only works for Mersenne numbers of the form 2^p - 1.
-        assert_ne!(self.0, 2);
-        assert!(is_prime(self.0));
+        if !is_prime(self.0) {
+            // If n is not prime, then 2^n - 1 is not prime.
+            return false;
+        }
 
         let p = self.0;
         let mut s = BigUint::from(4u32);
@@ -29,6 +35,7 @@ impl MersenneNumber {
             if i % 1_000 == 0 {
                 dbg!(i);
             }
+            // The extra mallocs here are negligible compared to the cost of the modulo operation.
             s = (&s * &s - 2u32) % &m;
         }
         s == BigUint::ZERO
@@ -71,6 +78,6 @@ fn main() {
         .unwrap_or(DEFAULT_N);
 
     let p = MersenneNumber(n);
-    assert!(p.is_prime());
     println!("{p}");
+    assert!(p.is_prime());
 }
