@@ -1,10 +1,12 @@
 // @ts-nocheck
 
 const PERMITTIVITY = 8.854e-12; // Vacuum permittivity in F/m
+const RESISTIVITY = 1e14;
 
 const PIXEL_SCALE = 2.58e-2 / 96; // 1 in per 96 pixels
 const CELL_WIDTH = 4;
 const CELL_SCALE = PIXEL_SCALE * CELL_WIDTH;
+const CELL_WALL_RESISTANCE = RESISTIVITY / CELL_SCALE;
 
 const particles = [
   {
@@ -32,15 +34,16 @@ function draw() {
   for (let i = 0; i < 10; i++) {
     field.solve();
   }
+  field.simulate();
 
   img.loadPixels();
   for (let x = 0; x < img.width; x++) {
     for (let y = 0; y < img.height; y++) {
       const [fieldX, fieldY] = field.getField(x, y);
-      const fieldMagnitude = sqrt(fieldX * fieldX + fieldY * fieldY);
+      const chargeDensity = field.getChargeDensity(x, y);
       const index = (x + y * img.width) * 4;
-      img.pixels[index] = map(fieldMagnitude, 0, 1e8, 0, 255);
-      img.pixels[index + 1] = map(fieldX, -1e8, 1e8, 0, 255);
+      img.pixels[index] = map(fieldX, -1e8, 1e8, 0, 255);
+      img.pixels[index + 1] = map(chargeDensity, -1, 1, 0, 255);
       img.pixels[index + 2] = map(fieldY, -1e8, 1e8, 0, 255);
       img.pixels[index + 3] = 255;
     }
@@ -65,6 +68,8 @@ class CoulombField {
   }
 
   solve() {}
+
+  simulate() {}
 
   getField(x, y) {
     let fieldX = 0;
@@ -133,6 +138,38 @@ class GaussField {
     }
   }
 
+  simulate() {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        const index = x + y * this.width;
+        const northIndex = x + y * this.width;
+        const southIndex = x + (y + 1) * this.width;
+        const westIndex = x + y * (this.width + 1);
+        const eastIndex = x + 1 + y * (this.width + 1);
+
+        const northField = this.fieldY[northIndex];
+        const southField = this.fieldY[southIndex];
+        const westField = this.fieldX[westIndex];
+        const eastField = this.fieldX[eastIndex];
+
+        const northVoltageDelta = northField * CELL_SCALE;
+        const southVoltageDelta = -southField * CELL_SCALE;
+        const westVoltageDelta = westField * CELL_SCALE;
+        const eastVoltageDelta = -eastField * CELL_SCALE;
+
+        const northCurrent = northVoltageDelta / CELL_WALL_RESISTANCE;
+        const southCurrent = southVoltageDelta / CELL_WALL_RESISTANCE;
+        const westCurrent = westVoltageDelta / CELL_WALL_RESISTANCE;
+        const eastCurrent = eastVoltageDelta / CELL_WALL_RESISTANCE;
+
+        const netCurrent =
+          northCurrent + southCurrent + westCurrent + eastCurrent;
+        this.chargeDensity[index] +=
+          (deltaTime * netCurrent) / (CELL_SCALE * CELL_SCALE * CELL_SCALE);
+      }
+    }
+  }
+
   getField(x, y) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
       return [0, 0];
@@ -151,5 +188,16 @@ class GaussField {
     const eastField = this.fieldX[eastIndex];
 
     return [0.5 * (eastField + westField), 0.5 * (southField + northField)];
+  }
+
+  getChargeDensity(x, y) {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
+      return [0, 0];
+    }
+    x = floor(x);
+    y = floor(y);
+
+    const index = x + y * this.width;
+    return this.chargeDensity[index];
   }
 }
